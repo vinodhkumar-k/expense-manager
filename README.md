@@ -1,3 +1,5 @@
+An application built using React, Redux, Express and MongoDB to manage user's expenses
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
