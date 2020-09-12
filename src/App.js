@@ -1,8 +1,9 @@
 import React from 'react';
-import { Toolbar } from '@material-ui/core'
+import { Toolbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import './App.css';
+import Router from './router';
 
 const useStyles = makeStyles({
   header: {
@@ -23,6 +24,9 @@ const useStyles = makeStyles({
     padding: 0,
     lineHeight: '45px',
     position: 'fixed'
+  },
+  main: {
+    maxHeight: 'calc(100vh - 110px)'
   }
 });
 
@@ -34,6 +38,7 @@ function App() {
       <header>
         <Toolbar className={styles.header}>Expenses Manager</Toolbar>
       </header>
+      <main>{Router}</main>
       <footer className={styles.footer}>Footer goes here</footer>
     </div>
   );
