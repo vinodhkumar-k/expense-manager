@@ -6,7 +6,6 @@ import MainLayout from './containers/MainLayout/MainLayout';
 
 export default (
   <Router history={createBrowserHistory()}>
-    <Route path="/" component={MainLayout}>
-    </Route>
+    <Route path="/" exact component={MainLayout}></Route>
   </Router>
 );

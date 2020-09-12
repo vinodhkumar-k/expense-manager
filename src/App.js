@@ -10,8 +10,7 @@ const useStyles = makeStyles({
     backgroundColor: '#5b616c',
     minHeight: 45,
     maxHeight: 45,
-    // font: 'Charlie Text',
-    color: 'white'
+    color: 'white',
   },
   footer: {
     bottom: 0,
@@ -20,14 +19,12 @@ const useStyles = makeStyles({
     backgroundColor: '#343a40',
     height: 45,
     fontSize: 12,
-    margin: 0,
-    padding: 0,
     lineHeight: '45px',
-    position: 'fixed'
+    position: 'fixed',
   },
   main: {
-    maxHeight: 'calc(100vh - 110px)'
-  }
+    maxHeight: 'calc(100vh - 110px)',
+  },
 });
 
 function App() {
