@@ -1,0 +1,18 @@
+{
+  "expenses": [
+    {
+      "ID": 1,
+      "DATE": "2020-09-13",
+      "CATEGORY": "Entertainment",
+      "DETAILS": "Movie",
+      "AMOUNT": 2000
+    },
+    {
+      "ID": 2,
+      "DATE": "2020-09-12",
+      "CATEGORY": "INSURANCE",
+      "DETAILS": "INSURANCE",
+      "AMOUNT": 5000
+    }
+  ]
+}

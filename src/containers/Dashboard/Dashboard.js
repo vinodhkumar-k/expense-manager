@@ -1,5 +1,7 @@
 import React from 'react';
 
-const Dashboard = () => <h1 style={{ height: 45 }}>Dashboard</h1>;
+import DataGrid from '../../components/UI/DataGrid/DataGrid';
+
+const Dashboard = () => <DataGrid />;
 
 export default Dashboard;
