@@ -49,7 +49,6 @@ const DataGrid = () => {
             </TableRow>
           ))}
         </TableBody>
-        {/* <TableFooter>Total</TableFooter> */}
       </Table>
     </>
   );
