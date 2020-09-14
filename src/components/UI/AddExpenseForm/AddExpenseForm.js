@@ -15,7 +15,6 @@ const useStyles = makeStyles({
   },
   header: {
     color: 'rgba(0, 0, 0, 0.54)',
-    // alignSelf: 'center',
     justifySelf: 'center',
   },
   formField: {
