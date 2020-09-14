@@ -26,6 +26,7 @@ const useStyles = makeStyles({
 });
 
 const DataGrid = (props) => {
+  
   // ToDo: Column Headers & row data should come as props
   const styles = useStyles();
   const columnHeaders = ['No.', 'DATE', 'CATEGORY', 'DETAILS', 'AMOUNT'];
