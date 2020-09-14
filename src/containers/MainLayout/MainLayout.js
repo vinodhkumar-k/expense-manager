@@ -20,7 +20,7 @@ const MainLayout = () => {
     if (value === 0) return <Dashboard />;
     if (value === 1) return <MonthlyInsights />;
   };
-  
+
   return (
     <>
       <Tabs

@@ -6,6 +6,7 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  TableContainer,
   TableFooter,
 } from '@material-ui/core';
 
@@ -13,43 +14,56 @@ import expensesData from '../../../assets/data/expenses.json';
 
 const useStyles = makeStyles({
   table: {
-    width: '50%',
-    height: '50%',
+    //width: '50%',
+    // height: '50%',
   },
   tableBody: {
-    height: '50%',
+    // height: '50%',
   },
   tableFooter: {
     right: 0,
   },
 });
 
-const DataGrid = () => {
+const DataGrid = (props) => {
+  // ToDo: Column Headers & row data should come as props
   const styles = useStyles();
   const columnHeaders = ['No.', 'DATE', 'CATEGORY', 'DETAILS', 'AMOUNT'];
 
   return (
     <>
-      <Table className={styles.table}>
-        <TableHead>
-          <TableRow>
-            {columnHeaders.map((column) => (
-              <TableCell key={column}>{column}</TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody className={styles.tableBody}>
-          {expensesData.expenses.map((row, index) => (
-            <TableRow key={index}>
+      <TableContainer
+        style={{ height: props.tableHeight, width: props.tableWidth }}
+      >
+        <Table stickyHeader className={styles.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell
+                colSpan={columnHeaders.length}
+                style={{ textAlign: 'center' }}
+              >
+                {props.tableCaption}
+              </TableCell>
+            </TableRow>
+            <TableRow>
               {columnHeaders.map((column) => (
-                <TableCell key={column}>
-                  {column === 'No.' ? index + 1 : row[column]}
-                </TableCell>
+                <TableCell key={column}>{column}</TableCell>
               ))}
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody className={styles.tableBody}>
+            {expensesData.expenses.map((row, index) => (
+              <TableRow key={index}>
+                {columnHeaders.map((column) => (
+                  <TableCell key={column}>
+                    {column === 'No.' ? index + 1 : row[column]}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   );
 };

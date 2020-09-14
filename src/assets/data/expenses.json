@@ -13,6 +13,34 @@
       "CATEGORY": "INSURANCE",
       "DETAILS": "INSURANCE",
       "AMOUNT": 5000
+    },
+    {
+      "ID": 3,
+      "DATE": "2020-09-01",
+      "CATEGORY": "HEALTH",
+      "DETAILS": "MEDICINE",
+      "AMOUNT": 250
+    },
+    {
+      "ID": 4,
+      "DATE": "2020-09-02",
+      "CATEGORY": "TRANSPORT",
+      "DETAILS": "METRO",
+      "AMOUNT": 500
+    },
+    {
+      "ID": 5,
+      "DATE": "2020-09-05",
+      "CATEGORY": "PERSONAL CARE",
+      "DETAILS": "CLOTHING",
+      "AMOUNT": 1000
+    },
+    {
+      "ID": 6,
+      "DATE": "2020-09-08",
+      "CATEGORY": "TRANSPORT",
+      "DETAILS": "PARKING",
+      "AMOUNT": 50
     }
   ]
 }
