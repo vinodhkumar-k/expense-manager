@@ -14,8 +14,6 @@ import expensesData from '../../../assets/data/expenses.json';
 
 const useStyles = makeStyles({
   table: {
-    //width: '50%',
-    // height: '50%',
   },
   tableBody: {
     // height: '50%',
