@@ -16,7 +16,6 @@ const useStyles = makeStyles({
   table: {
   },
   tableBody: {
-    // height: '50%',
   },
   tableFooter: {
     right: 0,
