@@ -83,3 +83,5 @@ https://github.com/mui-org/material-ui/issues/13394
 https://medium.com/trabe/getting-rid-of-finddomnode-method-in-your-react-application-a0d7093b2660
 
 https://medium.com/@Elijah_Meeks/interactive-applications-with-react-d3-f76f7b3ebc71
+
+https://app.pluralsight.com/guides/using-d3.js-inside-a-react-app
