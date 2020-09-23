@@ -3,6 +3,9 @@ import { Box } from '@material-ui/core';
 
 import DataGrid from '../../components/UI/DataGrid/DataGrid';
 import AddExpenseForm from '../../components/UI/AddExpenseForm/AddExpenseForm';
+import BarChart from '../../components/Charts/BarChart/BarChart';
+
+import expensesData from '../../assets/data/expenses.json';
 
 const Dashboard = () => {
   return (
@@ -16,11 +19,14 @@ const Dashboard = () => {
         <AddExpenseForm />
       </Box>
       <Box display="flex" flexDirection="row">
-        <DataGrid
+        {/* <DataGrid
           tableCaption="Monthly Expenses for --"
           tableHeight="300px"
           tableWidth="50%"
-        />
+        /> */}
+        <Box style={{width: '50%'}}>
+          <BarChart data={expensesData.expenses}/>
+        </Box>
         <DataGrid
           tableCaption="Monthly Expenses for --"
           tableHeight="300px"

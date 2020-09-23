@@ -68,3 +68,18 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+Notes:
+
+http://jsfiddle.net/cyril123/v231v7gb/
+
+Issues:
+Warning: Legacy context API has been detected within a strict-mode tree
+https://stackoverflow.com/questions/61647771/react-reactstrap-warning-legacy-context-api-has-been-detected-within-a-strict
+https://github.com/reactstrap/reactstrap/issues/1340
+
+https://github.com/mui-org/material-ui/issues/13394
+
+https://medium.com/trabe/getting-rid-of-finddomnode-method-in-your-react-application-a0d7093b2660
+
+https://medium.com/@Elijah_Meeks/interactive-applications-with-react-d3-f76f7b3ebc71

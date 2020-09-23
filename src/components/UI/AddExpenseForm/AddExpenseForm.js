@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   TextField,
@@ -6,7 +6,8 @@ import {
   Input,
   InputLabel,
   InputAdornment,
-  DatePicker,
+  Select,
+  NativeSelect,
 } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
     justifySelf: 'center',
   },
   formField: {
-    maxWidth: 250,
+    width: 250,
   },
   margin: {
     margin: '0px 5px',
@@ -27,18 +28,77 @@ const useStyles = makeStyles({
 
 const AddExpenseForm = () => {
   const styles = useStyles();
+  const categories = [
+    'Home & Utility',
+    'Transport',
+    'Food & Drinks',
+    'Health & Personal Care',
+    'Clothing & Footwear',
+    'Education',
+    'Gifts',
+    'Celebrations',
+    'Charity',
+    'Entertainment',
+    'Loans',
+    'Sports',
+    'Others',
+  ];
   const [values, setValues] = React.useState({
     amount: '',
   });
+  // const [category, setCategory] = useState('');
+  const category = '';
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
+  const handleCategoryChange = (event, index, value) => {
+    console.log(event);
+    console.log(index);
+  };
+
   return (
     <form className={styles.form}>
       <h4 className={styles.header}>Add New Expense</h4>
-      <TextField label="Category" className={styles.margin} />
+      {/* <TextField label="Category" className={styles.margin} /> */}
+      <FormControl className={styles.formField}>
+        <InputLabel>Category</InputLabel>
+        {/* <NativeSelect
+          value={category[0]}
+          onChange={onCategoryChange}
+          // inputProps={{
+          //   name: 'category',
+          //   id: 'age-native-helper',
+          // }}
+        >
+          <option aria-label="None" value="" />
+          <option value={10}>Ten</option>
+          <option value={20}>Twenty</option>
+          <option value={30}>Thirty</option>
+          {categories.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </NativeSelect> */}
+        <Select
+          native
+          value={category}
+          onChange={handleCategoryChange}
+          // inputProps={{
+          //   name: 'category',
+          //   id: 'age-native-helper',
+          // }}
+        >
+          {/* <option aria-label="None" value="" /> */}
+          {categories.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </Select>
+      </FormControl>
       <TextField
         id="date"
         label="Birthday"
