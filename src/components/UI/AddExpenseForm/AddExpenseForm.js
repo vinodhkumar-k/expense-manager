@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
+  Box,
   TextField,
   FormControl,
   Input,
@@ -62,9 +63,10 @@ const AddExpenseForm = () => {
     <form className={styles.form}>
       <h4 className={styles.header}>Add New Expense</h4>
       {/* <TextField label="Category" className={styles.margin} /> */}
-      <FormControl className={styles.formField}>
-        <InputLabel>Category</InputLabel>
-        {/* <NativeSelect
+      <Box>
+        <FormControl className={styles.formField}>
+          <InputLabel>Category</InputLabel>
+          {/* <NativeSelect
           value={category[0]}
           onChange={onCategoryChange}
           // inputProps={{
@@ -82,43 +84,46 @@ const AddExpenseForm = () => {
             </option>
           ))}
         </NativeSelect> */}
-        <Select
-          native
-          value={category}
-          onChange={handleCategoryChange}
+          <Select
+            native
+            value={category}
+            onChange={handleCategoryChange}
           // inputProps={{
           //   name: 'category',
           //   id: 'age-native-helper',
           // }}
-        >
-          {/* <option aria-label="None" value="" /> */}
-          {categories.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </Select>
-      </FormControl>
-      <TextField
-        id="date"
-        label="Birthday"
-        type="date"
-        format="dd/MM/yyyy"
-        className={styles.margin}
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
-      <TextField label="Details" className={styles.margin} />
-      <FormControl className={`${styles.maxWidth} ${styles.margin}`}>
-        <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
-        <Input
-          id="standard-adornment-amount"
-          value={values.amount}
-          onChange={handleChange('amount')}
-          startAdornment={<InputAdornment position="start">$</InputAdornment>}
+          >
+            {/* <option aria-label="None" value="" /> */}
+            {categories.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </Select>
+        </FormControl>
+        <TextField
+          id="date"
+          label="Birthday"
+          type="date"
+          format="dd/MM/yyyy"
+          className={styles.margin}
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
-      </FormControl>
+      </Box>
+      <Box>
+        <TextField label="Details" className={`${styles.margin} ${styles.formField}`} />
+        <FormControl className={`${styles.maxWidth} ${styles.margin}`}>
+          <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
+          <Input
+            id="standard-adornment-amount"
+            value={values.amount}
+            onChange={handleChange('amount')}
+            startAdornment={<InputAdornment position="start">$</InputAdornment>}
+          />
+        </FormControl>
+      </Box>
     </form>
   );
 };
