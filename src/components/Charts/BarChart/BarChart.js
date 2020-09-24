@@ -37,6 +37,16 @@ const BarChart = ({data}) => {
       svg.select(".x-axis").call(xAxis);
       svg.select(".y-axis").call(yAxis);
       
+      svg.select(".plot-area")
+         .attr("fill", "steelblue")
+         .selectAll(".bar")
+         .data(data)
+         .join("rect")
+         .attr("class", "bar")
+         .attr("x", (d) => x(d.DATE))
+         .attr("width", x.bandwidth())
+         .attr("y", (d) => y(d.AMOUNT))
+         .attr("height", (d) => y(0) - y(d.AMOUNT));
     },
     [data.length]
   );
