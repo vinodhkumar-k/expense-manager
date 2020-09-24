@@ -25,6 +25,9 @@ const useStyles = makeStyles({
   margin: {
     margin: '0px 5px',
   },
+  width: {
+    width: 200
+  }
 });
 
 const AddExpenseForm = () => {
@@ -63,7 +66,7 @@ const AddExpenseForm = () => {
     <form className={styles.form}>
       <h4 className={styles.header}>Add New Expense</h4>
       {/* <TextField label="Category" className={styles.margin} /> */}
-      <Box>
+      <Box display="flex" flexDirection="row" justifyContent="center">
         <FormControl className={styles.formField}>
           <InputLabel>Category</InputLabel>
           {/* <NativeSelect
@@ -106,15 +109,15 @@ const AddExpenseForm = () => {
           label="Birthday"
           type="date"
           format="dd/MM/yyyy"
-          className={styles.margin}
+          className={`${styles.width} ${styles.margin}`}
           InputLabelProps={{
             shrink: true,
           }}
         />
       </Box>
-      <Box>
-        <TextField label="Details" className={`${styles.margin} ${styles.formField}`} />
-        <FormControl className={`${styles.maxWidth} ${styles.margin}`}>
+      <Box display="flex" flexDirection="row" justifyContent="center">
+        <TextField label="Details" className={`${styles.formField}`} />
+        <FormControl className={`${styles.width} ${styles.margin}`}>
           <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
           <Input
             id="standard-adornment-amount"
