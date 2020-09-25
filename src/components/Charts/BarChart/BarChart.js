@@ -26,6 +26,7 @@ const BarChart = ({data}) => {
          .call(d3.axisBottom(x))
          .attr('x', x.bandwidth()/2)
          .attr('y', 0);*/
+      
       const xAxis =  (g) => 
                       g.call(d3.axisBottom(x))
                        .attr('transform', `translate(0, ${height})`);
