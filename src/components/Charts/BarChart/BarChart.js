@@ -20,7 +20,6 @@ const BarChart = ({data}) => {
                   .rangeRound([height - margin.bottom, margin.top]);
 
       /*svg.append('g').call(d3.axisLeft(y));
-      
       svg.append('g')
          .attr('transform', `translate(0, ${height})`)
          .call(d3.axisBottom(x))
