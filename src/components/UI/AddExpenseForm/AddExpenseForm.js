@@ -8,6 +8,7 @@ import {
   InputLabel,
   InputAdornment,
   Select,
+  Button,
   NativeSelect,
 } from '@material-ui/core';
 
@@ -27,6 +28,13 @@ const useStyles = makeStyles({
   },
   width: {
     width: 200
+  },
+  button: {
+    backgroundColor: '#007fad',
+    marginTop: 10,
+    '&:hover': {
+      backgroundColor: '#007fad',
+    },
   }
 });
 
@@ -127,6 +135,9 @@ const AddExpenseForm = () => {
           />
         </FormControl>
       </Box>
+      <Button variant="contained" color="primary" className={styles.button}>
+        Save
+      </Button>
     </form>
   );
 };
