@@ -25,7 +25,11 @@ const Dashboard = () => {
           tableWidth="50%"
         /> */}
         <Box style={{width: '50%'}}>
-          <BarChart data={expensesData.expenses}/>
+          <BarChart
+            data={expensesData.expenses}
+            SVGHeight={300}
+            SVGWidth={500}
+            containerMargin={{top: 25, right: 30, bottom: 0, left: 40}}/>
         </Box>
         <DataGrid
           tableCaption="Monthly Expenses for --"
