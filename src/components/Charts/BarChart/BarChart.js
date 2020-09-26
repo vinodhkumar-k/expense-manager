@@ -3,12 +3,12 @@ import * as d3 from 'd3';
 
 import { useD3 } from '../../../hooks/useD3';
 
-const BarChart = ({data}) => {
+const BarChart = ({data, SVGHeight, SVGWidth, containerMargin}) => {
   const ref = useD3(
     (svg) => {
-      const height = 250;
-      const width = 500;
-      const margin = { top: 20, right: 30, bottom: 0, left: 40 };
+      const height = SVGHeight - containerMargin.top - containerMargin.bottom;
+      const width = SVGWidth - containerMargin.left - containerMargin.right;
+      const margin = containerMargin;
 
       const x = d3.scaleBand()
                   .domain(data.map(d => d.DATE))
@@ -52,7 +52,7 @@ const BarChart = ({data}) => {
   );
 
   return (
-    <svg ref={ref} style={{height: 350, width: '100%', marginRight: 0, marginLeft: 0}}>
+    <svg ref={ref} style={{height: SVGHeight, width: SVGWidth, marginRight: 0, marginLeft: 0}}>
       <g className="plot-area"/>
       <g className="x-axis"/>
       <g className="y-axis"/>
