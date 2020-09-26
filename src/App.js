@@ -21,6 +21,7 @@ const useStyles = makeStyles({
     fontSize: 12,
     lineHeight: '45px',
     position: 'fixed',
+    zIndex: 10
   },
   main: {
     maxHeight: 'calc(100vh - 110px)',
