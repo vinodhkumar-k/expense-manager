@@ -45,9 +45,7 @@ const DonutChart = () => {
           .attrTween("d", function () {
             let start = { startAngle: 0, endAngle: 0 };
             let interpolator = d3.interpolate(start, d);
-            return function (t) {
-              return arc(interpolator(t));
-            };
+            return t => arc(interpolator(t))
           })
       });
 
