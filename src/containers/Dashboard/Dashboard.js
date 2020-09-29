@@ -4,6 +4,7 @@ import { Box } from '@material-ui/core';
 import DataGrid from '../../components/UI/DataGrid/DataGrid';
 import AddExpenseForm from '../../components/UI/AddExpenseForm/AddExpenseForm';
 import BarChart from '../../components/Charts/BarChart/BarChart';
+import DonutChart from '../../components/Charts/DonutChart/DonutChart';
 
 import expensesData from '../../assets/data/expenses.json';
 
@@ -31,11 +32,7 @@ const Dashboard = () => {
             SVGWidth={500}
             containerMargin={{top: 25, right: 30, bottom: 0, left: 40}}/>
         </Box>
-        <DataGrid
-          tableCaption="Monthly Expenses for --"
-          tableHeight="300px"
-          tableWidth="50%"
-        />
+        <DonutChart></DonutChart>
       </Box>
     </Box>
   );
