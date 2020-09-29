@@ -30,12 +30,12 @@ const DonutChart = () => {
       const donutHoleRadius = totalRadius * 0.5;
       const color = d3.scaleOrdinal(schemeCategory10);
 
-      const group = d3.select(document.getElementsByClassName('donutChartSvgContainer')[0]).append("g")
+      const group = svg.append("g")
         .classed("donutG", true)
         .attr("transform", "translate(" + 300 + "," + 150 + ")"); // Pass transform properties as props
 
       const arc = d3.arc().innerRadius(totalRadius - donutHoleRadius).outerRadius(totalRadius);
-      const arcs = d3.pie().value((d) => { return d.acres; })(hopsData);
+      const arcs = d3.pie().value((d) => { return d.acres; })(hopsData); // hard coded hopsData
 
       arcs.forEach(function (d, i) {
         group.append("path")
@@ -50,12 +50,36 @@ const DonutChart = () => {
             };
           })
       });
+
+      // Create the legend
+      const legendG = svg.selectAll(".legendG")
+        .data(hopsData)
+        .enter()
+        .append("g")
+        .classed("legendG", true)
+        .attr("transform", (d, i) => {
+          return "translate(" + 500 + "," + (i * 40 + 50) + ")";  // Legend translate properties should be props
+        });
+
+      legendG.append("rect")
+        .attr("width", 30)
+        .attr("height", 30)
+        .attr("fill", function (d, i) {
+          return color(i);
+        });
+
+      legendG.append("text")
+        .text(d => d.name)
+        .style("font-size", '1em')
+        .style("font-family", "Roboto, sans-serif")
+        .attr("y", 20)
+        .attr("x", 40);
     },
-    [hopsData.length] // pass length property
+    [hopsData.length]
   );
   return (
-    <svg ref={ref} style={{ height: 350, width: 500, marginRight: 0, marginLeft: 0 }} className="donutChartSvgContainer">
-      <g className="plot-area"/>
+    <svg ref={ref} style={{ height: 350, width: 700, marginRight: 0, marginLeft: 0 }} className="donutChartSvgContainer">
+      <g className="plot-area" />
     </svg>
   );
 }
