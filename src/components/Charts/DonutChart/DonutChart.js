@@ -1,4 +1,3 @@
-
 import React from 'react';
 import * as d3 from 'd3';
 
@@ -31,13 +30,32 @@ const DonutChart = () => {
       const donutHoleRadius = totalRadius * 0.5;
       const color = d3.scaleOrdinal(schemeCategory10);
 
+      const group = d3.select(document.getElementsByClassName('donutChartSvgContainer')[0]).append("g")
+        .classed("donutG", true)
+        .attr("transform", "translate(" + 300 + "," + 150 + ")"); // Pass transform properties as props
+
       const arc = d3.arc().innerRadius(totalRadius - donutHoleRadius).outerRadius(totalRadius);
+      const arcs = d3.pie().value((d) => { return d.acres; })(hopsData);
+
+      arcs.forEach(function (d, i) {
+        group.append("path")
+          .attr("fill", color(i))
+          .transition()
+          .duration(2000)
+          .attrTween("d", function () {
+            let start = { startAngle: 0, endAngle: 0 };
+            let interpolator = d3.interpolate(start, d);
+            return function (t) {
+              return arc(interpolator(t));
+            };
+          })
+      });
     },
-    [] // pass length property
+    [hopsData.length] // pass length property
   );
   return (
-    <svg ref={ref} style={{ height: 300, width: 300, marginRight: 0, marginLeft: 0 }}>
-      <g className="plot-area" />
+    <svg ref={ref} style={{ height: 350, width: 500, marginRight: 0, marginLeft: 0 }} className="donutChartSvgContainer">
+      <g className="plot-area"/>
     </svg>
   );
 }
