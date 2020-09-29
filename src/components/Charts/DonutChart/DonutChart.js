@@ -1,8 +1,26 @@
+
 import React from 'react';
 import * as d3 from 'd3';
 
 import { useD3 } from '../../../hooks/useD3';
 import { schemeCategory10 } from 'd3';
+
+const hopsData = [{
+  name: 'Washington',
+  acres: 32205
+}, {
+  name: 'Oregon',
+  acres: 6807
+}, {
+  name: 'Idaho',
+  acres: 4975
+}, {
+  name: 'Other States',
+  acres: 1244
+}, {
+  name: 'Canada',
+  acres: 257
+}];
 
 const DonutChart = () => {
   const ref = useD3(
