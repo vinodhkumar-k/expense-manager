@@ -75,6 +75,7 @@ const DonutChart = () => {
     },
     [hopsData.length]
   );
+  
   return (
     <svg ref={ref} style={{ height: 350, width: 700, marginRight: 0, marginLeft: 0 }} className="donutChartSvgContainer">
       <g className="plot-area" />
