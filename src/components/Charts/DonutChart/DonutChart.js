@@ -62,9 +62,7 @@ const DonutChart = ({data}) => {
       legendG.append("rect")
         .attr("width", 30)
         .attr("height", 30)
-        .attr("fill", function (d, i) {
-          return color(i);
-        });
+        .attr("fill", (d, i) => color(i));
 
       legendG.append("text")
         .text(d => d.CATEGORY) // hard coded CATEGORY
