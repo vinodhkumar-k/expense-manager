@@ -36,8 +36,10 @@ const Dashboard = () => {
           data={expensesData.expenses}
           SVGHeight={300}
           SVGWidth={700}
+          column="AMOUNT"
+          legendColumn="CATEGORY"
           translate={{x: 300, y: 150}}
-          legendColumn="CATEGORY"></DonutChart>
+          legendTranslate={{x: 500, y: 40}}></DonutChart>
       </Box>
     </Box>
   );
