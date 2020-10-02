@@ -32,7 +32,7 @@ const Dashboard = () => {
             SVGWidth={500}
             containerMargin={{top: 25, right: 30, bottom: 0, left: 40}}/>
         </Box>
-        <DonutChart data={expensesData.expenses} SVGHeight={300} SVGWidth={700}></DonutChart>
+        <DonutChart data={expensesData.expenses} SVGHeight={300} SVGWidth={700} translate={{x: 300, y: 150}}></DonutChart>
       </Box>
     </Box>
   );
