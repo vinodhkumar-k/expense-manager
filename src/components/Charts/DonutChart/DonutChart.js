@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 import { useD3 } from '../../../hooks/useD3';
 import { schemeCategory10 } from 'd3';
 
-const DonutChart = ({data}) => {
+const DonutChart = ({data, SVGHeight, SVGWidth}) => {
   const ref = useD3(
     (svg) => {
       const height = 300;
@@ -57,7 +57,7 @@ const DonutChart = ({data}) => {
     [data.length]
   );
   return (
-    <svg ref={ref} style={{ height: 300, width: 700, marginRight: 0, marginLeft: 0 }} className="donutChartSvgContainer">
+    <svg ref={ref} style={{ height: SVGHeight, width: SVGWidth, marginRight: 0, marginLeft: 0 }}>
       <g className="plot-area" />
     </svg>
   );
