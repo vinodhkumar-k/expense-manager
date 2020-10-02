@@ -8,8 +8,7 @@ import {
   InputLabel,
   InputAdornment,
   Select,
-  Button,
-  NativeSelect,
+  Button
 } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -58,17 +57,13 @@ const AddExpenseForm = () => {
   const [values, setValues] = React.useState({
     amount: '',
   });
-  // const [category, setCategory] = useState('');
-  const category = '';
+  const [category, setCategory] = useState('');
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
-  const handleCategoryChange = (event, index, value) => {
-    console.log(event);
-    console.log(index);
-  };
+  const handleCategoryChange = event => setCategory(event.target.value);
 
   return (
     <form className={styles.form}>
@@ -77,24 +72,6 @@ const AddExpenseForm = () => {
       <Box display="flex" flexDirection="row" justifyContent="center">
         <FormControl className={styles.formField}>
           <InputLabel>Category</InputLabel>
-          {/* <NativeSelect
-          value={category[0]}
-          onChange={onCategoryChange}
-          // inputProps={{
-          //   name: 'category',
-          //   id: 'age-native-helper',
-          // }}
-        >
-          <option aria-label="None" value="" />
-          <option value={10}>Ten</option>
-          <option value={20}>Twenty</option>
-          <option value={30}>Thirty</option>
-          {categories.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </NativeSelect> */}
           <Select
             native
             value={category}
@@ -104,7 +81,6 @@ const AddExpenseForm = () => {
           //   id: 'age-native-helper',
           // }}
           >
-            {/* <option aria-label="None" value="" /> */}
             {categories.map((option) => (
               <option key={option} value={option}>
                 {option}
