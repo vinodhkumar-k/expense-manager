@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Box } from '@material-ui/core';
 
@@ -33,7 +32,7 @@ const Dashboard = () => {
             SVGWidth={500}
             containerMargin={{top: 25, right: 30, bottom: 0, left: 40}}/>
         </Box>
-        <DonutChart></DonutChart>
+        <DonutChart data={expensesData.expenses}></DonutChart>
       </Box>
     </Box>
   );
