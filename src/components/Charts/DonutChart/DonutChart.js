@@ -4,18 +4,18 @@ import * as d3 from 'd3';
 import { useD3 } from '../../../hooks/useD3';
 import { schemeCategory10 } from 'd3';
 
-const DonutChart = ({data, SVGHeight, SVGWidth}) => {
+const DonutChart = ({data, SVGHeight, SVGWidth, translate}) => {
   const ref = useD3(
     (svg) => {
-      const height = 300;
-      const width = 700;
+      const height = SVGHeight;
+      const width = SVGWidth;
       const totalRadius = Math.min(width, height) / 2;
       const donutHoleRadius = totalRadius * 0.5;
       const color = d3.scaleOrdinal(schemeCategory10);
 
       const group = svg.append("g")
         .classed("donutG", true)
-        .attr("transform", "translate(" + 300 + "," + 150 + ")"); // Pass transform properties as props
+        .attr("transform", "translate(" + translate.x + "," + translate.y + ")");
 
       const arc = d3.arc().innerRadius(totalRadius - donutHoleRadius).outerRadius(totalRadius);
       const arcs = d3.pie().value((d) => { return d.AMOUNT; })(data); // hard coded Amount
