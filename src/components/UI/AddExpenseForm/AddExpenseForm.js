@@ -54,33 +54,32 @@ const AddExpenseForm = () => {
     'Sports',
     'Others',
   ];
-  const [values, setValues] = React.useState({
+
+  const [values, setValues] = useState({
     amount: '',
+    category: '',
+    details: '',
+    date: ''
   });
-  const [category, setCategory] = useState('');
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
-  const handleCategoryChange = event => setCategory(event.target.value);
+  const handleSave = () => {
+    console.log(values)
+  }
 
   return (
     <form className={styles.form}>
       <h4 className={styles.header}>Add New Expense</h4>
-      {/* <TextField label="Category" className={styles.margin} /> */}
       <Box display="flex" flexDirection="row" justifyContent="center">
         <FormControl className={styles.formField}>
           <InputLabel>Category</InputLabel>
           <Select
             native
-            value={category}
-            onChange={handleCategoryChange}
-          // inputProps={{
-          //   name: 'category',
-          //   id: 'age-native-helper',
-          // }}
-          >
+            values={values['category']}
+            onChange={handleChange('category')}>
             {categories.map((option) => (
               <option key={option} value={option}>
                 {option}
@@ -94,13 +93,14 @@ const AddExpenseForm = () => {
           type="date"
           format="dd/MM/yyyy"
           className={`${styles.width} ${styles.margin}`}
+          onChange={handleChange('date')}
           InputLabelProps={{
             shrink: true,
           }}
         />
       </Box>
       <Box display="flex" flexDirection="row" justifyContent="center">
-        <TextField label="Details" className={`${styles.formField}`} />
+        <TextField label="Details" className={`${styles.formField}`} onChange={handleChange('details')} />
         <FormControl className={`${styles.width} ${styles.margin}`}>
           <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
           <Input
@@ -111,7 +111,7 @@ const AddExpenseForm = () => {
           />
         </FormControl>
       </Box>
-      <Button variant="contained" color="primary" className={styles.button}>
+      <Button variant="contained" color="primary" className={styles.button} onClick={handleSave}>
         Save
       </Button>
     </form>
