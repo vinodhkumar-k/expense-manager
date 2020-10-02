@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 import { useD3 } from '../../../hooks/useD3';
 import { schemeCategory10 } from 'd3';
 
-const DonutChart = ({data, SVGHeight, SVGWidth, translate, legendColumn}) => {
+const DonutChart = ({data, SVGHeight, SVGWidth, translate, legendColumn, column, legendTranslate}) => {
   const ref = useD3(
     (svg) => {
       const height = SVGHeight;
@@ -18,7 +18,7 @@ const DonutChart = ({data, SVGHeight, SVGWidth, translate, legendColumn}) => {
         .attr("transform", "translate(" + translate.x + "," + translate.y + ")");
 
       const arc = d3.arc().innerRadius(totalRadius - donutHoleRadius).outerRadius(totalRadius);
-      const arcs = d3.pie().value((d) => { return d.AMOUNT; })(data); // hard coded Amount
+      const arcs = d3.pie().value((d) => { return d[column]; })(data);
 
       arcs.forEach(function (d, i) {
         group.append("path")
@@ -39,7 +39,7 @@ const DonutChart = ({data, SVGHeight, SVGWidth, translate, legendColumn}) => {
         .append("g")
         .classed("legendG", true)
         .attr("transform", (d, i) => {
-          return "translate(" + 500 + "," + (i * 40 + 50) + ")";  // Legend translate properties should be props
+          return "translate(" + legendTranslate.x + "," + (i * legendTranslate.y + 50) + ")";
         });
 
       legendG.append("rect")
@@ -57,9 +57,7 @@ const DonutChart = ({data, SVGHeight, SVGWidth, translate, legendColumn}) => {
     [data.length]
   );
   return (
-    <svg ref={ref} style={{ height: SVGHeight, width: SVGWidth, marginRight: 0, marginLeft: 0 }}>
-      <g className="plot-area" />
-    </svg>
+    <svg ref={ref} style={{ height: SVGHeight, width: SVGWidth, marginRight: 0, marginLeft: 0 }} />
   );
 }
 
