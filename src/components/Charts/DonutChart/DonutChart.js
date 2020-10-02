@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 import { useD3 } from '../../../hooks/useD3';
 import { schemeCategory10 } from 'd3';
 
-const DonutChart = ({data, SVGHeight, SVGWidth, translate}) => {
+const DonutChart = ({data, SVGHeight, SVGWidth, translate, legendColumn}) => {
   const ref = useD3(
     (svg) => {
       const height = SVGHeight;
@@ -48,7 +48,7 @@ const DonutChart = ({data, SVGHeight, SVGWidth, translate}) => {
         .attr("fill", (d, i) => color(i));
 
       legendG.append("text")
-        .text(d => d.CATEGORY) // hard coded CATEGORY
+        .text(d => d[legendColumn].toUpperCase())
         .style("font-size", '1em')
         .style("font-family", "Roboto, sans-serif")
         .attr("y", 20)
