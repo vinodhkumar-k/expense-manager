@@ -3,7 +3,6 @@ import * as d3 from 'd3';
 
 import { useD3 } from '../../../hooks/useD3';
 import { schemeCategory10 } from 'd3';
-
 const DonutChart = ({data, SVGHeight, SVGWidth, translate, legendColumn, column, legendTranslate}) => {
   const ref = useD3(
     (svg) => {
