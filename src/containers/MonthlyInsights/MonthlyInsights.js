@@ -1,4 +1,6 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+
 import Tiles from '../../components/UI/Tiles/Tiles';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June'];
@@ -19,12 +21,22 @@ const expensesByMonth = {
   'December': '$199',
 }
 
+const useStyles = makeStyles({
+  tiles: {
+    width: '50%',
+    float: 'left'
+  }
+});
+
 // const MonthlyInsights = () => <h1 style={{ height: 45 }}>MonthlyInsights</h1>;
 const MonthlyInsights = () => {
+  const styles = useStyles();
   return (
-    <Tiles title={Object.keys(expensesByMonth)}
-      content={Object.values(expensesByMonth)}
-      height='160px' width='160px' />
+    <div className={styles.tiles}>
+      <Tiles title={Object.keys(expensesByMonth)}
+        content={Object.values(expensesByMonth)}
+        height='160px' width='160px' />
+    </div>
   )
 };
 
