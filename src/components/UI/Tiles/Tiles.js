@@ -1,12 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-const months = ['January', 'February', 'March', 'April', 'May', 'June']; // Move this to helpers file
-
 const useStyles = makeStyles({
   tile: {
-    width: 160,
-    height: 160,
+    width: props => props.width,
+    // height: 160,
+    height: props => props.height,
     background: '#329eac',
     margin: 5,
     float: 'left',
@@ -22,13 +21,19 @@ const useStyles = makeStyles({
   }
 })
 
-const Tiles = () => {
-  const styles = useStyles();
+const Tiles = (props) => {
+  const styles = useStyles({height: props.height || 160, width: props.width || 160});
   return (
     <div>
       {
-        months.map((item, index) => (
-          <div key={item} className={styles.tile}>{item}</div>
+        props.title.map((item, index) => (
+          <div key={item} className={styles.tile}>
+            <div>
+              {item}
+              <br />
+              <span>{props.content[index]}</span>
+            </div>
+          </div>
         ))
       }
     </div>
