@@ -10,7 +10,13 @@ const expensesByMonth = {
   'March': '$260',
   'April': '$450',
   'May': '$289',
-  'June': '$369'
+  'June': '$369',
+  'July': '$458',
+  'August': '$698',
+  'September': '$595',
+  'October': '$398',
+  'November': '$288',
+  'December': '$199',
 }
 
 // const MonthlyInsights = () => <h1 style={{ height: 45 }}>MonthlyInsights</h1>;
@@ -23,4 +29,3 @@ const MonthlyInsights = () => {
 };
 
 export default MonthlyInsights;
-
