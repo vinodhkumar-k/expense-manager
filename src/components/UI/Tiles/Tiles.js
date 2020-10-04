@@ -5,15 +5,15 @@ const months = ['January', 'February', 'March', 'April', 'May', 'June']; // Move
 
 const useStyles = makeStyles({
   tile: {
-    width: '10em',
-    height: '10em',
-    background: '#00BCD4',
+    width: 160,
+    height: 160,
+    background: '#329eac',
     margin: 5,
     float: 'left',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    //fontFamily: Roboto, sans-serif
+    fontFamily: 'Roboto, sans-serif',
     color: '#FFF',
     '&:hover': {
       background: '#0d6672',
@@ -28,10 +28,11 @@ const Tiles = () => {
     <div>
       {
         months.map((item, index) => (
-          <div key={item}>{item}</div>
+          <div key={item} className={styles.tile}>{item}</div>
         ))
       }
     </div>
   );
 };
+
 export default Tiles;
