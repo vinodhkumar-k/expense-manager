@@ -10,8 +10,6 @@ import {
   TableFooter,
 } from '@material-ui/core';
 
-import expensesData from '../../../assets/data/expenses.json';
-
 const useStyles = makeStyles({
   table: {
   },
