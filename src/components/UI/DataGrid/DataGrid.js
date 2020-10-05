@@ -24,9 +24,7 @@ const useStyles = makeStyles({
 
 const DataGrid = (props) => {
   
-  // ToDo: Column Headers & row data should come as props
   const styles = useStyles();
-  const columnHeaders = ['No.', 'DATE', 'CATEGORY', 'DETAILS', 'AMOUNT'];
 
   return (
     <>
@@ -37,24 +35,25 @@ const DataGrid = (props) => {
           <TableHead>
             <TableRow>
               <TableCell
-                colSpan={columnHeaders.length}
+                colSpan={props.columnHeaders.length}
                 style={{ textAlign: 'center' }}
               >
                 {props.tableCaption}
               </TableCell>
             </TableRow>
             <TableRow>
-              {columnHeaders.map((column) => (
+              {props.columnHeaders.map((column) => (
                 <TableCell key={column}>{column}</TableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody className={styles.tableBody}>
-            {expensesData.expenses.map((row, index) => (
+            {props.data.map((row, index) => (
               <TableRow key={index}>
-                {columnHeaders.map((column) => (
+                {props.columnHeaders.map((column) => (
                   <TableCell key={column}>
-                    {column === 'No.' ? index + 1 : row[column]}
+                    {/* {column === 'No.' ? index + 1 : row[column]} */}
+                    {row[column]}
                   </TableCell>
                 ))}
               </TableRow>
