@@ -9,11 +9,14 @@ import DonutChart from '../../components/Charts/DonutChart/DonutChart';
 import expensesData from '../../assets/data/expenses.json';
 
 const Dashboard = () => {
+  const columnHeaders = ['DATE', 'CATEGORY', 'DETAILS', 'AMOUNT'];
   return (
     <Box display="flex" flexDirection="column" mt={0.1} mb={0.1}>
       <Box display="flex" flexDirection="row" mb={0.2}>
         <DataGrid
           tableCaption="Monthly Expenses for --"
+          columnHeaders={columnHeaders}
+          data={expensesData.expenses}
           tableHeight="300px"
           tableWidth="50%"
         />
