@@ -5,6 +5,7 @@ import DataGrid from '../../components/UI/DataGrid/DataGrid';
 import AddExpenseForm from '../../components/UI/AddExpenseForm/AddExpenseForm';
 import BarChart from '../../components/Charts/BarChart/BarChart';
 import DonutChart from '../../components/Charts/DonutChart/DonutChart';
+import dateTime from '../../utils/dateTime';
 
 import expensesData from '../../assets/data/expenses.json';
 
@@ -14,7 +15,7 @@ const Dashboard = () => {
     <Box display="flex" flexDirection="column" mt={0.1} mb={0.1}>
       <Box display="flex" flexDirection="row" mb={0.2}>
         <DataGrid
-          tableCaption="Monthly Expenses for --"
+          tableCaption={"Monthly Expenses for " + dateTime.getCurrentMonth()}
           columnHeaders={columnHeaders}
           data={expensesData.expenses}
           tableHeight="300px"
