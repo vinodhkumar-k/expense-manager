@@ -23,11 +23,6 @@ const Dashboard = () => {
         <AddExpenseForm />
       </Box>
       <Box display="flex" flexDirection="row">
-        {/* <DataGrid
-          tableCaption="Monthly Expenses for --"
-          tableHeight="300px"
-          tableWidth="50%"
-        /> */}
         <Box style={{width: '50%'}}>
           <BarChart
             data={expensesData.expenses}
