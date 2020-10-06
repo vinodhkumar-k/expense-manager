@@ -2,14 +2,14 @@
   "expenses": [
     {
       "ID": 1,
-      "DATE": "2020-09-13",
+      "DATE": "13-09-2020",
       "CATEGORY": "Entertainment",
       "DETAILS": "Movie",
       "AMOUNT": 2000
     },
     {
       "ID": 2,
-      "DATE": "2020-09-12",
+      "DATE": "12-09-2020",
       "CATEGORY": "INSURANCE",
       "DETAILS": "INSURANCE",
       "AMOUNT": 5000
@@ -30,14 +30,14 @@
     },
     {
       "ID": 5,
-      "DATE": "2020-09-05",
+      "DATE": "05-09-2020",
       "CATEGORY": "PERSONAL CARE",
       "DETAILS": "CLOTHING",
       "AMOUNT": 1000
     },
     {
       "ID": 6,
-      "DATE": "2020-09-08",
+      "DATE": "08-09-2020",
       "CATEGORY": "TRANSPORT",
       "DETAILS": "PARKING",
       "AMOUNT": 50
