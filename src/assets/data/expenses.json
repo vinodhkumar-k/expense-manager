@@ -16,14 +16,14 @@
     },
     {
       "ID": 3,
-      "DATE": "2020-09-01",
+      "DATE": "01-09-2020",
       "CATEGORY": "HEALTH",
       "DETAILS": "MEDICINE",
       "AMOUNT": 250
     },
     {
       "ID": 4,
-      "DATE": "2020-09-02",
+      "DATE": "02-09-2020",
       "CATEGORY": "TRANSPORT",
       "DETAILS": "METRO",
       "AMOUNT": 500
