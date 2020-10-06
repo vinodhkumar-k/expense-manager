@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
+import _ from 'lodash';
 
 import DataGrid from '../../components/UI/DataGrid/DataGrid';
 import AddExpenseForm from '../../components/UI/AddExpenseForm/AddExpenseForm';
@@ -17,7 +18,7 @@ const Dashboard = () => {
         <DataGrid
           tableCaption={"Monthly Expenses for " + dateTime.getCurrentMonth()}
           columnHeaders={columnHeaders}
-          data={expensesData.expenses}
+          data={_.orderBy(expensesData.expenses, 'DATE', 'asc')}
           tableHeight="300px"
           tableWidth="50%"
         />
