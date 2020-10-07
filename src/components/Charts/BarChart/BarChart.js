@@ -18,13 +18,6 @@ const BarChart = ({data, xAxisColumn, yAxisColumn, SVGHeight, SVGWidth, containe
       const y = d3.scaleLinear()
                   .domain([0, d3.max(data, d => d[yAxisColumn])])
                   .rangeRound([height - margin.bottom, margin.top]);
-
-      /*svg.append('g').call(d3.axisLeft(y));
-      svg.append('g')
-         .attr('transform', `translate(0, ${height})`)
-         .call(d3.axisBottom(x))
-         .attr('x', x.bandwidth()/2)
-         .attr('y', 0);*/
       
       const xAxis =  (g) => 
                       g.call(d3.axisBottom(x))
@@ -45,10 +38,8 @@ const BarChart = ({data, xAxisColumn, yAxisColumn, SVGHeight, SVGWidth, containe
          .attr("class", "bar")
          .attr("x", (d) => x(d[xAxisColumn]))
          .attr("width", x.bandwidth())
-         //.attr("y", (d) => y(d[yAxisColumn]))
-         //.attr("height", (d) => y(0) - y(d[yAxisColumn]));
          .transition()
-            .duration(1000)
+            .duration(1500)
             .attr("y", (d) => y(d[yAxisColumn]))
             .attr("height", (d) => y(0) - y(d[yAxisColumn]));
     },
