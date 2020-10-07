@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 
 import { useD3 } from '../../../hooks/useD3';
 
-const BarChart = ({data, SVGHeight, SVGWidth, containerMargin}) => {
+const BarChart = ({data, xAxisColumn, yAxisColumn, SVGHeight, SVGWidth, containerMargin}) => {
   const ref = useD3(
     (svg) => {
       const height = SVGHeight - containerMargin.top - containerMargin.bottom;
@@ -11,12 +11,12 @@ const BarChart = ({data, SVGHeight, SVGWidth, containerMargin}) => {
       const margin = containerMargin;
 
       const x = d3.scaleBand()
-                  .domain(data.map(d => d.DATE))
+                  .domain(data.map(d => d[xAxisColumn]))
                   .rangeRound([margin.left, width - margin.right])
                   .padding(0.1);
 
       const y = d3.scaleLinear()
-                  .domain([0, d3.max(data, d => d.AMOUNT)])
+                  .domain([0, d3.max(data, d => d[yAxisColumn])])
                   .rangeRound([height - margin.bottom, margin.top]);
 
       /*svg.append('g').call(d3.axisLeft(y));
@@ -32,7 +32,7 @@ const BarChart = ({data, SVGHeight, SVGWidth, containerMargin}) => {
             
       const yAxis = (g) => 
                      g.call(d3.axisLeft(y))
-                      .text(data.AMOUNT)
+                      .text(data[yAxisColumn])
       
       svg.select(".x-axis").call(xAxis);
       svg.select(".y-axis").call(yAxis);
@@ -43,10 +43,10 @@ const BarChart = ({data, SVGHeight, SVGWidth, containerMargin}) => {
          .data(data)
          .join("rect")
          .attr("class", "bar")
-         .attr("x", (d) => x(d.DATE))
+         .attr("x", (d) => x(d[xAxisColumn]))
          .attr("width", x.bandwidth())
-         .attr("y", (d) => y(d.AMOUNT))
-         .attr("height", (d) => y(0) - y(d.AMOUNT));
+         .attr("y", (d) => y(d[yAxisColumn]))
+         .attr("height", (d) => y(0) - y(d[yAxisColumn]));
     },
     [data.length]
   );
