@@ -45,8 +45,12 @@ const BarChart = ({data, xAxisColumn, yAxisColumn, SVGHeight, SVGWidth, containe
          .attr("class", "bar")
          .attr("x", (d) => x(d[xAxisColumn]))
          .attr("width", x.bandwidth())
-         .attr("y", (d) => y(d[yAxisColumn]))
-         .attr("height", (d) => y(0) - y(d[yAxisColumn]));
+         //.attr("y", (d) => y(d[yAxisColumn]))
+         //.attr("height", (d) => y(0) - y(d[yAxisColumn]));
+         .transition()
+            .duration(1000)
+            .attr("y", (d) => y(d[yAxisColumn]))
+            .attr("height", (d) => y(0) - y(d[yAxisColumn]));
     },
     [data.length]
   );
