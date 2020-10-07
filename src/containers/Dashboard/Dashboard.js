@@ -28,6 +28,8 @@ const Dashboard = () => {
         <Box style={{width: '50%'}}>
           <BarChart
             data={expensesData.expenses}
+            xAxisColumn="DATE"
+            yAxisColumn="AMOUNT"
             SVGHeight={300}
             SVGWidth={500}
             containerMargin={{top: 25, right: 30, bottom: 0, left: 40}}/>
