@@ -62,5 +62,4 @@ const DataGrid = (props) => {
     </>
   );
 };
-
 export default DataGrid;
