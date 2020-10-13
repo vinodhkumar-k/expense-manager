@@ -39,4 +39,5 @@ const Tiles = (props) => {
     </div>
   );
 };
+
 export default Tiles;
