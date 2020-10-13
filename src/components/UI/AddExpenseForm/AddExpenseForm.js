@@ -12,6 +12,8 @@ import {
   Button
 } from '@material-ui/core';
 
+import { CATEGORIES } from '../../../constants';
+
 const useStyles = makeStyles({
   form: {
     width: '50%',
@@ -40,21 +42,6 @@ const useStyles = makeStyles({
 
 const AddExpenseForm = () => {
   const styles = useStyles();
-  const categories = [
-    'Home & Utility',
-    'Transport',
-    'Food & Drinks',
-    'Health & Personal Care',
-    'Clothing & Footwear',
-    'Education',
-    'Gifts',
-    'Celebrations',
-    'Charity',
-    'Entertainment',
-    'Loans',
-    'Sports',
-    'Others',
-  ];
 
   const [values, setValues] = useState({
     amount: '',
@@ -84,7 +71,7 @@ const AddExpenseForm = () => {
             native
             values={values['category']}
             onChange={handleChange('category')}>
-            {categories.map((option) => (
+            {CATEGORIES.map((option) => (
               <option key={option} value={option}>
                 {option}
               </option>
