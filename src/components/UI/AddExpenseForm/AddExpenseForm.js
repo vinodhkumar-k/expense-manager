@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Box,
@@ -63,11 +64,14 @@ const AddExpenseForm = () => {
   });
 
   const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
+    setValues({
+      ...values,
+      [prop]: prop === 'date' ? moment(event.target.value).format('DD-MM-YYYY') :  event.target.value
+    });
   };
 
   const handleSave = () => {
-    console.log(values)
+    console.log(values);
   }
 
   return (
