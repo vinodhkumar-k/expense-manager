@@ -54,4 +54,5 @@ const BarChart = ({data, xAxisColumn, yAxisColumn, SVGHeight, SVGWidth, containe
     </svg>
   );
 }
+
 export default BarChart;
