@@ -7,7 +7,7 @@ const initialState = {
   categoryWiseExpensesForAllMonths: []
 }
 
-const reducer = (action, state = initialState) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_EXPENSE:
       return Object.assign({}, state, {
