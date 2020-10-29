@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box } from '@material-ui/core';
 import _ from 'lodash';
 
@@ -7,18 +8,28 @@ import AddExpenseForm from '../../components/UI/AddExpenseForm/AddExpenseForm';
 import BarChart from '../../components/Charts/BarChart/BarChart';
 import DonutChart from '../../components/Charts/DonutChart/DonutChart';
 import dateTime from '../../utils/dateTime';
+import { fetchMonthlyExpenseDetails } from '../../store/actions';
 
 import expensesData from '../../assets/data/expenses.json';
 
 const Dashboard = () => {
-  const columnHeaders = ['DATE', 'CATEGORY', 'DETAILS', 'AMOUNT'];
+  const columnHeaders = ['date', 'category', 'details', 'amount'];
+  const expenses = useSelector(state => state.monthlyExpenseDetails);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchMonthlyExpenseDetails(1239, dateTime.getCurrentMonth().toLowerCase()));
+  }, [])
+  
+  useEffect(() => {}, [expenses])
+
   return (
     <Box display="flex" flexDirection="column" mt={0.1} mb={0.1}>
       <Box display="flex" flexDirection="row" mb={0.2}>
         <DataGrid
           tableCaption={"Monthly Expenses for " + dateTime.getCurrentMonth()}
           columnHeaders={columnHeaders}
-          data={_.orderBy(expensesData.expenses, 'DATE', 'asc')}
+          data={_.orderBy(expenses, 'date', 'asc')}
           tableHeight="300px"
           tableWidth="50%"
         />
