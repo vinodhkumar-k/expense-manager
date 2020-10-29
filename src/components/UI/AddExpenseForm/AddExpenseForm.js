@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, TextField, FormControl, Input, InputLabel,
           InputAdornment, Select, Button } from '@material-ui/core';
 
-import * as actionTypes from '../../../store/actions';
+import { addExpenseDetails } from '../../../store/actions';
 import dateTime from '../../../utils/dateTime';
 import { CATEGORIES } from '../../../constants';
 
@@ -69,11 +69,10 @@ const AddExpenseForm = () => {
         }]
       }
     };
-    dispatch(actionTypes.addExpenseDetails(expenseDetails));
+    dispatch(addExpenseDetails(expenseDetails));
     setValues({
       ...values,
       amount: '',
-      category: '',
       details: '',
       date: ''
     });
