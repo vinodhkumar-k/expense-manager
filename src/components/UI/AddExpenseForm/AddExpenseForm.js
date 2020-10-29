@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  Box, TextField, FormControl, Input, InputLabel,
-  InputAdornment, Select, Button
-} from '@material-ui/core';
+import { Box, TextField, FormControl, Input, InputLabel,
+          InputAdornment, Select, Button } from '@material-ui/core';
 
 import * as actionTypes from '../../../store/actions';
 import dateTime from '../../../utils/dateTime';
@@ -51,7 +49,7 @@ const AddExpenseForm = () => {
   const handleChange = (prop) => (event) => {
     setValues({
       ...values,
-      [prop]: prop === 'date' ? moment(event.target.value).format('DD-MM-YYYY') : event.target.value
+      [prop]: event.target.value
     });
   };
 
@@ -64,7 +62,7 @@ const AddExpenseForm = () => {
         "month": dateTime.getCurrentMonth().toLowerCase(),
         "expenditure": [{
           "expenseId": dateTime.getCurrentTimestamp(),
-          "date": values.date,
+          "date": moment(values.date).format('DD-MM-YYYY'),
           "category": values.category,
           "amount": values.amount,
           "details": values.details
@@ -72,6 +70,13 @@ const AddExpenseForm = () => {
       }
     };
     dispatch(actionTypes.addExpenseDetails(expenseDetails));
+    setValues({
+      ...values,
+      amount: '',
+      category: '',
+      details: '',
+      date: ''
+    });
   }
 
   return (
@@ -97,6 +102,7 @@ const AddExpenseForm = () => {
           type="date"
           format="dd/MM/yyyy"
           className={`${styles.width} ${styles.margin}`}
+          value={values.date}
           onChange={handleChange('date')}
           InputLabelProps={{
             shrink: true,
@@ -104,7 +110,9 @@ const AddExpenseForm = () => {
         />
       </Box>
       <Box display="flex" flexDirection="row" justifyContent="center">
-        <TextField label="Details" className={`${styles.formField}`} onChange={handleChange('details')} />
+        <TextField label="Details" className={`${styles.formField}`}
+          value={values.details}
+          onChange={handleChange('details')} />
         <FormControl className={`${styles.width} ${styles.margin}`}>
           <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
           <Input
