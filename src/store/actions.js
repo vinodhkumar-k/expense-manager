@@ -21,8 +21,22 @@ export const fetchMonthlyExpenseDetails = (userId, month) => {
   return dispatch => {
     axios.get(`${API_BASE_URL}/expenses/${userId}/${month}`)
       .then(response => {
-        dispatch({type: actionTypes.SET_MONTHLY_EXPENSE_DETAILS, payload: response.data.expenditure});
+        if (response.data) {
+          dispatch({type: actionTypes.SET_MONTHLY_EXPENSE_DETAILS, payload: response.data.expenditure});
+        }
       })
       .catch(err => console.error(err));
   };
+};
+
+export const fetchCategoryWiseExpensesForAllMonths = (userId) => {
+  return dispatch => {
+    axios.get(`${API_BASE_URL}/analytics/category/${userId}`)
+      .then(response => {
+        if (response.data) {
+          dispatch({type: actionTypes.SET_CATEGORY_WISE_EXPENSE_FOR_ALL_MONTHS, payload: response.data});
+        }
+      })
+      .catch(err => console.error(err));
+  }
 };
