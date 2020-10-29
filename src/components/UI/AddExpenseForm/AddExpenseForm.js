@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import moment from 'moment';
+import { useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-  Box,
-  TextField,
-  FormControl,
-  Input,
-  InputLabel,
-  InputAdornment,
-  Select,
-  Button
+  Box, TextField, FormControl, Input, InputLabel,
+  InputAdornment, Select, Button
 } from '@material-ui/core';
 
+import * as actionTypes from '../../../store/actions';
+import dateTime from '../../../utils/dateTime';
 import { CATEGORIES } from '../../../constants';
 
 const useStyles = makeStyles({
@@ -42,6 +39,7 @@ const useStyles = makeStyles({
 
 const AddExpenseForm = () => {
   const styles = useStyles();
+  const dispatch = useDispatch();
 
   const [values, setValues] = useState({
     amount: '',
@@ -53,12 +51,27 @@ const AddExpenseForm = () => {
   const handleChange = (prop) => (event) => {
     setValues({
       ...values,
-      [prop]: prop === 'date' ? moment(event.target.value).format('DD-MM-YYYY') :  event.target.value
+      [prop]: prop === 'date' ? moment(event.target.value).format('DD-MM-YYYY') : event.target.value
     });
   };
 
   const handleSave = () => {
-    console.log(values);
+    const expenseDetails = {
+      "userId": 1239,
+      "userName": "vinodh",
+      "email": "vinodhkumarkonda@gmail.com",
+      "expenses": {
+        "month": dateTime.getCurrentMonth().toLowerCase(),
+        "expenditure": [{
+          "expenseId": dateTime.getCurrentTimestamp(),
+          "date": values.date,
+          "category": values.category,
+          "amount": values.amount,
+          "details": values.details
+        }]
+      }
+    };
+    dispatch(actionTypes.addExpenseDetails(expenseDetails));
   }
 
   return (
