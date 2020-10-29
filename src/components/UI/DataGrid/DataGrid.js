@@ -41,7 +41,7 @@ const DataGrid = (props) => {
             </TableRow>
             <TableRow>
               {props.columnHeaders.map((column) => (
-                <TableCell key={column}>{column}</TableCell>
+                <TableCell key={column}>{column.toUpperCase()}</TableCell>
               ))}
             </TableRow>
           </TableHead>
