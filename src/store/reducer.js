@@ -2,7 +2,9 @@ import * as actionTypes from './actionTypes';
 
 const initialState = {
   monthlyExpenseDetails: [],
-  categoryWiseExpenseForAMonth: []
+  totalExpensesForAllMonths: [],
+  categoryWiseExpensesForAMonth: [],
+  categoryWiseExpensesForAllMonths: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -16,6 +18,12 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         monthlyExpenseDetails: action.payload
       });
+
+    case actionTypes.SET_CATEGORY_WISE_EXPENSE_FOR_ALL_MONTHS:
+      return Object.assign({}, state, {
+        categoryWiseExpensesForAllMonths: action.payload
+      });
+
     default:
       return state;
   }
