@@ -64,7 +64,7 @@ const AddExpenseForm = () => {
           "expenseId": dateTime.getCurrentTimestamp(),
           "date": moment(values.date).format('DD-MM-YYYY'),
           "category": values.category,
-          "amount": values.amount,
+          "amount": Number(values.amount),
           "details": values.details
         }]
       }
