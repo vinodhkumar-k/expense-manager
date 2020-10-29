@@ -8,19 +8,20 @@ import AddExpenseForm from '../../components/UI/AddExpenseForm/AddExpenseForm';
 import BarChart from '../../components/Charts/BarChart/BarChart';
 import DonutChart from '../../components/Charts/DonutChart/DonutChart';
 import dateTime from '../../utils/dateTime';
-import { fetchMonthlyExpenseDetails, fetchCategoryWiseExpensesForAllMonths } from '../../store/actions';
-
-import expensesData from '../../assets/data/expenses.json';
+import { fetchMonthlyExpenseDetails, fetchCategoryWiseExpensesForAllMonths,
+      fetchTotalExpensesForAllMonths } from '../../store/actions';
 
 const Dashboard = () => {
   const columnHeaders = ['date', 'category', 'details', 'amount'];
   const expenses = useSelector(state => state.monthlyExpenseDetails);
   const categoryWiseExpensesForAllMonths = useSelector(state => state.categoryWiseExpensesForAllMonths);
+  const totalExpensesForAllMonths = useSelector(state => state.totalExpensesForAllMonths);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchMonthlyExpenseDetails(1239, dateTime.getCurrentMonth().toLowerCase()));
     dispatch(fetchCategoryWiseExpensesForAllMonths(1239));
+    dispatch(fetchTotalExpensesForAllMonths(1239));
   }, []);
   
   useEffect(() => { }, [expenses, categoryWiseExpensesForAllMonths]);
@@ -40,9 +41,9 @@ const Dashboard = () => {
       <Box display="flex" flexDirection="row">
         <Box style={{width: '50%'}}>
           <BarChart
-            data={expensesData.expenses}
-            xAxisColumn="DATE"
-            yAxisColumn="AMOUNT"
+            data={totalExpensesForAllMonths}
+            xAxisColumn="_id"
+            yAxisColumn="total"
             SVGHeight={300}
             SVGWidth={500}
             containerMargin={{top: 25, right: 30, bottom: 0, left: 40}}/>
