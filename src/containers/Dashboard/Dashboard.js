@@ -8,20 +8,22 @@ import AddExpenseForm from '../../components/UI/AddExpenseForm/AddExpenseForm';
 import BarChart from '../../components/Charts/BarChart/BarChart';
 import DonutChart from '../../components/Charts/DonutChart/DonutChart';
 import dateTime from '../../utils/dateTime';
-import { fetchMonthlyExpenseDetails } from '../../store/actions';
+import { fetchMonthlyExpenseDetails, fetchCategoryWiseExpensesForAllMonths } from '../../store/actions';
 
 import expensesData from '../../assets/data/expenses.json';
 
 const Dashboard = () => {
   const columnHeaders = ['date', 'category', 'details', 'amount'];
   const expenses = useSelector(state => state.monthlyExpenseDetails);
+  const categoryWiseExpensesForAllMonths = useSelector(state => state.categoryWiseExpensesForAllMonths);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchMonthlyExpenseDetails(1239, dateTime.getCurrentMonth().toLowerCase()));
-  }, [])
+    dispatch(fetchCategoryWiseExpensesForAllMonths(1239));
+  }, []);
   
-  useEffect(() => {}, [expenses])
+  useEffect(() => { }, [expenses, categoryWiseExpensesForAllMonths]);
 
   return (
     <Box display="flex" flexDirection="column" mt={0.1} mb={0.1}>
@@ -46,11 +48,11 @@ const Dashboard = () => {
             containerMargin={{top: 25, right: 30, bottom: 0, left: 40}}/>
         </Box>
         <DonutChart
-          data={expensesData.expenses}
+          data={_.filter(categoryWiseExpensesForAllMonths, category => category.total > 0)}
           SVGHeight={300}
           SVGWidth={700}
-          column="AMOUNT"
-          legendColumn="CATEGORY"
+          column="total"
+          legendColumn="_id"
           translate={{x: 300, y: 150}}
           legendTranslate={{x: 500, y: 40}}></DonutChart>
       </Box>
