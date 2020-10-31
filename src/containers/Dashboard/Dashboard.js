@@ -24,7 +24,7 @@ const Dashboard = () => {
     dispatch(fetchTotalExpensesForAllMonths(1239));
   }, []);
   
-  useEffect(() => { }, [expenses, categoryWiseExpensesForAllMonths]);
+  useEffect(() => { }, [expenses, categoryWiseExpensesForAllMonths, totalExpensesForAllMonths]);
 
   return (
     <Box display="flex" flexDirection="column" mt={0.1} mb={0.1}>
