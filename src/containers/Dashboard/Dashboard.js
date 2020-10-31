@@ -48,6 +48,7 @@ const Dashboard = () => {
             SVGWidth={500}
             containerMargin={{top: 25, right: 30, bottom: 0, left: 40}}/>
         </Box>
+        {/* If legend info going down from UI reduce legendTranslate y value */}
         <DonutChart
           data={_.filter(categoryWiseExpensesForAllMonths, category => category.total > 0)}
           SVGHeight={300}
@@ -55,7 +56,7 @@ const Dashboard = () => {
           column="total"
           legendColumn="_id"
           translate={{x: 300, y: 150}}
-          legendTranslate={{x: 500, y: 40}}></DonutChart>
+          legendTranslate={{x: 500, y: 32}}></DonutChart> 
       </Box>
     </Box>
   );
