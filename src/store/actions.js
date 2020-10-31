@@ -10,7 +10,10 @@ export const addExpenseDetails = (expenseDetails) => {
     axios.post(`${API_BASE_URL}/expenses`, expenseDetails)
       .then(response => {
         if (response.data.ok === 1) {
-          dispatch({type: actionTypes.ADD_EXPENSE, payload: JSON.parse(response.config.data).expenses.expenditure[0]});
+          const responseData = JSON.parse(JSON.parse(response.config.data))
+          if (responseData.expenses.month === expenseDetails.expenses.month) {
+            dispatch({type: actionTypes.ADD_EXPENSE, payload: responseData.expenses.expenditure[0]});
+          }
         }
       })
       .catch(err => console.error(err));
