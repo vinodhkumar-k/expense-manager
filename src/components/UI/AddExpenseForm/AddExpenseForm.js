@@ -78,6 +78,8 @@ const AddExpenseForm = () => {
     });
   }
 
+  const validateSaveBtn = () => !values.category || !values.date || !values.amount;
+
   return (
     <form className={styles.form}>
       <h4 className={styles.header}>Add New Expense</h4>
@@ -122,7 +124,7 @@ const AddExpenseForm = () => {
           />
         </FormControl>
       </Box>
-      <Button variant="contained" color="primary" className={styles.button} onClick={handleSave}>
+      <Button variant="contained" color="primary" disabled={validateSaveBtn()} className={styles.button} onClick={handleSave}>
         Save
       </Button>
     </form>
