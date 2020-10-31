@@ -43,7 +43,7 @@ const BarChart = ({data, xAxisColumn, yAxisColumn, SVGHeight, SVGWidth, containe
             .attr("y", (d) => y(d[yAxisColumn]))
             .attr("height", (d) => y(0) - y(d[yAxisColumn]));
     },
-    [data.length]
+    [data]
   );
 
   return (
