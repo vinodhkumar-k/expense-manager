@@ -59,7 +59,7 @@ const AddExpenseForm = () => {
       "userName": "vinodh",
       "email": "vinodhkumarkonda@gmail.com",
       "expenses": {
-        "month": dateTime.getCurrentMonth().toLowerCase(),
+        "month": moment(values.date).format('MMMM').toLowerCase(),
         "expenditure": [{
           "expenseId": dateTime.getCurrentTimestamp(),
           "date": moment(values.date).format('DD-MM-YYYY'),
@@ -85,11 +85,12 @@ const AddExpenseForm = () => {
       <h4 className={styles.header}>Add New Expense</h4>
       <Box display="flex" flexDirection="row" justifyContent="center">
         <FormControl className={styles.formField}>
-          <InputLabel>Category</InputLabel>
+          <InputLabel>Select Category</InputLabel>
           <Select
             native
             values={values['category']}
             onChange={handleChange('category')}>
+            <option value=""></option>
             {CATEGORIES.map((option) => (
               <option key={option} value={option}>
                 {option}
