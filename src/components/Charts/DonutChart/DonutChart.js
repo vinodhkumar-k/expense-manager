@@ -54,7 +54,7 @@ const DonutChart = ({data, SVGHeight, SVGWidth, translate, legendColumn, column,
         .attr("y", 20)
         .attr("x", 40);
     },
-    [data.length]
+    [data]
   );
   return (
     <svg ref={ref} style={{ height: SVGHeight, width: SVGWidth, marginRight: 0, marginLeft: 0 }} />
