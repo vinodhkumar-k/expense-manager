@@ -18,6 +18,7 @@ export const addExpenseDetails = (expenseDetails) => {
             dispatch({type: actionTypes.ADD_EXPENSE, payload: responseData.expenses.expenditure[0]});
           }
           dispatch(fetchTotalExpensesForAllMonths(responseData.userId));
+          dispatch(fetchCategoryWiseExpensesForAllMonths(responseData.userId));
         }
       })
       .catch(err => console.error(err));
