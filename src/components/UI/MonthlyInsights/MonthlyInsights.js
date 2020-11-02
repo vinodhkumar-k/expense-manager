@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-import Tiles from '../../components/UI/Tiles/Tiles';
+import Tiles from '../Tiles/Tiles';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June'];
 const expensesByMonths = ['$250', '$359', '$260', '$450', '$289', '$369'];

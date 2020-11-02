@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
-import MainLayout from './containers/MainLayout/MainLayout';
+import MainLayout from './components/UI/MainLayout/MainLayout';
 
 export default (
   <Router history={createBrowserHistory()}>

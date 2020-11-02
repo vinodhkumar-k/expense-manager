@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box } from '@material-ui/core';
 import _ from 'lodash';
 
-import DataGrid from '../../components/UI/DataGrid/DataGrid';
-import AddExpenseForm from '../../components/UI/AddExpenseForm/AddExpenseForm';
-import BarChart from '../../components/Charts/BarChart/BarChart';
-import DonutChart from '../../components/Charts/DonutChart/DonutChart';
-import dateTime from '../../utils/dateTime';
+import DataGrid from '../DataGrid/DataGrid';
+import AddExpenseForm from '../AddExpenseForm/AddExpenseForm';
+import BarChart from '../../Charts/BarChart/BarChart';
+import DonutChart from '../../Charts/DonutChart/DonutChart';
+import dateTime from '../../../utils/dateTime';
 import { fetchMonthlyExpenseDetails, fetchCategoryWiseExpensesForAllMonths,
-      fetchTotalExpensesForAllMonths } from '../../store/actions';
+      fetchTotalExpensesForAllMonths } from '../../../store/actions';
 
 const Dashboard = () => {
   const columnHeaders = ['date', 'category', 'details', 'amount'];
