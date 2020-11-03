@@ -27,7 +27,7 @@ const Tiles = (props) => {
     <div>
       {
         props.title.map((item, index) => (
-          <div key={item} className={styles.tile}>
+          <div key={item} className={styles.tile} onClick={() => props.handleTileClick(item)}>
             <div>
               {item}
               <br />
