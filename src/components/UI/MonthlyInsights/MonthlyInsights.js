@@ -25,7 +25,6 @@ const MonthlyInsights = () => {
 
   useEffect(() => { fetchTotalExpensesForAllMonths(1239) }, []);
   useEffect(() => { console.log(monthlyExpenseDetails) }, [totalExpensesForAllMonths, monthlyExpenseDetails]);
-
   return (
     <>
       <div className={styles.tiles}>
