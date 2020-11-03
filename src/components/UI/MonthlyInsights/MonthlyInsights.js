@@ -1,25 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { useSelector } from 'react-redux';
 
 import Tiles from '../Tiles/Tiles';
-
-const months = ['January', 'February', 'March', 'April', 'May', 'June'];
-const expensesByMonths = ['$250', '$359', '$260', '$450', '$289', '$369'];
-
-const expensesByMonth = {
-  'January': '$250',
-  'February': '$359',
-  'March': '$260',
-  'April': '$450',
-  'May': '$289',
-  'June': '$369',
-  'July': '$458',
-  'August': '$698',
-  'September': '$595',
-  'October': '$398',
-  'November': '$288',
-  'December': '$199',
-}
+import { fetchMonthlyExpenseDetails, fetchTotalExpensesForAllMonths } from '../../../store/actions';
 
 const useStyles = makeStyles({
   tiles: {
@@ -28,14 +12,21 @@ const useStyles = makeStyles({
   }
 });
 
-// const MonthlyInsights = () => <h1 style={{ height: 45 }}>MonthlyInsights</h1>;
 const MonthlyInsights = () => {
   const styles = useStyles();
+  const totalExpensesForAllMonths = useSelector(state => state.totalExpensesForAllMonths);
+
+  const handleTileClick = (month) => { fetchMonthlyExpenseDetails(1239, month); };
+
+  useEffect(() => {fetchTotalExpensesForAllMonths(1239)}, []);
+  useEffect(() => {}, [totalExpensesForAllMonths]);
+
   return (
     <div className={styles.tiles}>
-      <Tiles title={Object.keys(expensesByMonth)}
-        content={Object.values(expensesByMonth)}
-        height='160px' width='160px' />
+      <Tiles title={Object.values(totalExpensesForAllMonths).map(val => val._id)}
+        content={Object.values(totalExpensesForAllMonths).map(val => val.total)}
+        height='160px' width='160px'
+        handleTileClick={handleTileClick} />
     </div>
   )
 };
