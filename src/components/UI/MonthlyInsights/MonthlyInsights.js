@@ -19,11 +19,12 @@ const MonthlyInsights = () => {
   const styles = useStyles();
   const columnHeaders = ['date', 'category', 'details', 'amount'];
   const totalExpensesForAllMonths = useSelector(state => state.totalExpensesForAllMonths);
+  const monthlyExpenseDetails = useSelector(state => state.monthlyExpenseDetails);
 
-  const handleTileClick = (month) => { fetchMonthlyExpenseDetails(1239, month); };
+  const handleTileClick = (month) => fetchMonthlyExpenseDetails(1239, month);
 
   useEffect(() => { fetchTotalExpensesForAllMonths(1239) }, []);
-  useEffect(() => { }, [totalExpensesForAllMonths]);
+  useEffect(() => { console.log(monthlyExpenseDetails) }, [totalExpensesForAllMonths, monthlyExpenseDetails]);
 
   return (
     <>
@@ -37,7 +38,7 @@ const MonthlyInsights = () => {
         <DataGrid
           tableCaption={"Monthly Expenses for " + dateTime.getCurrentMonth()}
           columnHeaders={columnHeaders}
-          data={[]}
+          data={monthlyExpenseDetails}
           tableHeight="300px"
           tableWidth="50%"
         />
