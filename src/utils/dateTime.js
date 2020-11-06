@@ -11,6 +11,10 @@ const dateTime = (() => {
     return months[moment().month()];
   };
 
+  const getMonthByDate = (date) => {
+    return months[moment(date, 'DD/MM/YYYY').format('M') - 1];
+  };
+
   const getCurrentTimestamp = () => {
     return new Date().getTime();
   };
@@ -33,6 +37,7 @@ const dateTime = (() => {
   return {
     months,
     getCurrentMonth,
+    getMonthByDate,
     getCurrentTimestamp,
     formatDate,
     sortByMonth
