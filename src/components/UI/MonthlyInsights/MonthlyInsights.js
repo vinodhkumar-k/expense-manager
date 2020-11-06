@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Tiles from '../Tiles/Tiles';
 import DataGrid from '../DataGrid/DataGrid';
@@ -17,15 +17,19 @@ const useStyles = makeStyles({
 
 const MonthlyInsights = () => {
   const styles = useStyles();
+  const dispatch = useDispatch();
   const columnHeaders = ['date', 'category', 'details', 'amount'];
   const totalExpensesForAllMonths = useSelector(state => state.totalExpensesForAllMonths);
   const monthlyExpenseDetails = useSelector(state => state.monthlyExpenseDetails);
+  const [expensesMonth, setExpensesMonth] = useState('');
 
-  const handleTileClick = (month) => fetchMonthlyExpenseDetails(1239, month);
+  const handleTileClick = (month) => dispatch(fetchMonthlyExpenseDetails(1239, month));
 
   useEffect(() => { fetchTotalExpensesForAllMonths(1239) }, []);
-  useEffect(() => { console.log(monthlyExpenseDetails) }, [totalExpensesForAllMonths, monthlyExpenseDetails]);
-  
+  useEffect(() => {
+    setExpensesMonth(dateTime.getMonthByDate(monthlyExpenseDetails.map(obj => obj.date)[0]));
+  }, [totalExpensesForAllMonths, monthlyExpenseDetails]);
+
   return (
     <>
       <div className={styles.tiles}>
@@ -36,7 +40,7 @@ const MonthlyInsights = () => {
       </div>
       <Box display="flex" flexDirection="column">
         <DataGrid
-          tableCaption={"Monthly Expenses for " + dateTime.getCurrentMonth()}
+          tableCaption={"Monthly Expenses for " + expensesMonth}
           columnHeaders={columnHeaders}
           data={monthlyExpenseDetails}
           tableHeight="300px"
