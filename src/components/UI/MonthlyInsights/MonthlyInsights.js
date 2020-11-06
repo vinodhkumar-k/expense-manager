@@ -44,7 +44,7 @@ const MonthlyInsights = () => {
           columnHeaders={columnHeaders}
           data={monthlyExpenseDetails}
           tableHeight="300px"
-          tableWidth="50%"
+          tableWidth="100%"
         />
       </Box>
     </>
