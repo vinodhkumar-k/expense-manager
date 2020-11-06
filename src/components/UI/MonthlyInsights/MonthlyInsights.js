@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Tiles from '../Tiles/Tiles';
 import DataGrid from '../DataGrid/DataGrid';
+import DonutChart from '../../Charts/DonutChart/DonutChart';
 import { fetchMonthlyExpenseDetails, fetchTotalExpensesForAllMonths } from '../../../store/actions';
 import dateTime from '../../../utils/dateTime';
 
@@ -38,14 +39,24 @@ const MonthlyInsights = () => {
           height='160px' width='160px'
           handleTileClick={handleTileClick} />
       </div>
-      <Box display="flex" flexDirection="column">
-        <DataGrid
-          tableCaption={"Monthly Expenses for " + expensesMonth}
-          columnHeaders={columnHeaders}
+      <Box display="flex" flexDirection="column" justifyContent="space-between">
+        <Box style={{ marginBottom: 15 }}>
+          <DataGrid
+            tableCaption={"Monthly Expenses for " + expensesMonth}
+            columnHeaders={columnHeaders}
+            data={monthlyExpenseDetails}
+            tableHeight="300px"
+            tableWidth="100%"
+          />
+        </Box>
+        <DonutChart
           data={monthlyExpenseDetails}
-          tableHeight="300px"
-          tableWidth="100%"
-        />
+          SVGHeight={300}
+          SVGWidth={700}
+          column="amount"
+          legendColumn="category"
+          translate={{ x: 300, y: 150 }}
+          legendTranslate={{ x: 500, y: 32 }} />
       </Box>
     </>
   )
