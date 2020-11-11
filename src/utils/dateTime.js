@@ -6,6 +6,7 @@ const dateTime = (() => {
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
   ];
+  
   const getCurrentMonth = () => {
     return months[moment().month()];
   };
